@@ -3,14 +3,14 @@ name: Exploring Workflow Dispatch Trigger
 on:
   workflow_dispatch:
     inputs:
-      run-job:
+      run_job:
         type: boolean
         required: false
         description: Run Specific Job
       custom_message:
-         type: string
-         required: true
-         description: Enter a custom message        
+        type: string
+        required: true
+        description: Enter a custom message
 
 jobs:
   job1:
@@ -18,12 +18,12 @@ jobs:
     steps:
       - run: echo "Exploring Workflow Dispatch Trigger"
 
-  job2:    
+  job2:
     runs-on: ubuntu-latest
     steps:
       - name: Printing Custom Message
         run: echo "${{ inputs.custom_message }}"
 
       - name: Printing run-job boolean value
-        run: echo "${{ inputs.run-job }}" 
-        if: ${{ inputs.run-job }}
+        if: ${{ inputs.run_job == true }}
+        run: echo "${{ inputs.run_job }}"
